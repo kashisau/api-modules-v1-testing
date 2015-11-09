@@ -6,6 +6,7 @@ Modules are loosely coupled files consisting of (at minimum) an Express.js route
 ## Folder structure
 
 Modules for the API server use the following conventions for the storage of each of the abovementioned components:
+
 ```
 +-- module-name/
     +-- config/
@@ -43,6 +44,7 @@ Modules for the API server use the following conventions for the storage of each
     +-- package.json # Node.js package configuration for this module
     +-- README.md # Sample read-me file (this file). To be replaced.
 +--
+```
 
 ## Testing
 
