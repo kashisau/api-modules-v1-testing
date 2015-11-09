@@ -1,0 +1,16 @@
+{
+    "name": "api-module-template",
+    "description": "A template for the development of a new microservice module for Kashi's API server.",
+    "author": "Kashi Samaraweera <kashi@kashis.com.au>",
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "dependencies": {
+        "mocha": "*",
+        "should": "*"
+    },
+    "scripts": {
+        "test": "node_modules/.bin/mocha -w"
+    }
+}
