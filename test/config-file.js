@@ -10,11 +10,13 @@
  */
 describe('Config file checks', function() {
 
-    var CONFIG_FILE_PATH = 'config/config.json';
+    var CONFIG_FILE_PATH = 'config/config.testing.json',
+        environment = process.env.NODE_ENV || 'development',
+        fs = require('fs'),
+        should = require('should'); 
 
-    it("Config file exists in /config/config.json", function(done) {
-        var fs = require('fs'),
-        configFileStats;
+    it("Config file exists in /config/config.testing.json", function(done) {
+        var configFileStats;
 
         (function() {
         configFileStats = fs.lstatSync(CONFIG_FILE_PATH);
@@ -22,6 +24,20 @@ describe('Config file checks', function() {
         }).should.not.throw();
 
         done();
+    });
+    
+    it("Config file specifies a valid path for repositories", function(done) {
+        var config = require('../' + CONFIG_FILE_PATH)[environment],
+            reposPath = config.reposPath,
+            reposPathFileStats;
+
+        config.reposPath.should.be.a.string;
+        (function() {
+            reposPathFileStats = fs.lstatSync(config.reposPath);
+            (reposPathFileStats.isDirectory()).should.be.true;
+       }).should.not.throw();
+
+       done();
     });
 
     // Should continue with testing of specific config file parameters.
